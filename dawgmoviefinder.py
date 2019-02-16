@@ -23,10 +23,16 @@ def send_message(message):
 
 # searches for user's requested movie on TMDb
 def search(query):
+    query = query.strip()
     results = requests.get('https://api.themoviedb.org/3/search/movie?api_key={0}&query={1}'.format(TMDB_KEY, query)).json()['results']
 
     if not results:
-        return 'No movie found called \"{0}\"'.format(query)
+        if query[:-5:-1].isdigit():
+            results = requests.get(
+                'https://api.themoviedb.org/3/search/movie?api_key={0}&query={1}&primary_release_year='.format(TMDB_KEY, query[:-5]), query[:-5:-1]).json()[
+                'results']
+        else:
+            return 'No movie found called \"{0}\"'.format(query)
 
     tmdb_id = str(results[0]['id'])
     movie = requests.get('https://api.themoviedb.org/3/movie/{0}?api_key={1}&append_to_response=credits,videos'.format(tmdb_id, TMDB_KEY)).json()
