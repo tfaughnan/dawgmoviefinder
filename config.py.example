@@ -1,0 +1,5 @@
+GM_KEY = '[GroupMe API key]'
+BOT_ID = '[GroupMe bot ID]'
+GROUP_ID = '[GroupMe group ID]'
+TMDB_KEY = '[TMDb API key]'
+ABOUT = '[personalized "about" info]'
