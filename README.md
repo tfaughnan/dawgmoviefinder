@@ -13,7 +13,7 @@ Its name comes from the blessed men and brothers of Alumni Hall, aka the dawgs, 
 How do I use it?
 ---
 1. Create an account with [The Movie Database](https://www.themoviedb.org/account/signup) and generate a TMDb API key.
-2. Register a new app on the [GroupMe website](https://dev.groupme.com/) and find your GroupMe API key, bot ID, and group ID.
+2. Log in and register a new app on the [GroupMe website](https://dev.groupme.com/) and find your GroupMe API key, bot ID, and group ID.
 3. Create a **config.py** file to store these four pieces of information, and add a personal message for the ``!about`` command. See [config.py.example](https://github.com/tfaughnan/dawgmoviefinder/blob/master/config.py.example) for specifics.
 4. Run [dawgmoviefinder.py](https://github.com/tfaughnan/dawgmoviefinder/blob/master/dawgmoviefinder.py) with your new config.py file.
 5. Interact with *Dawg Movie Finder* in your GroupMe group!
