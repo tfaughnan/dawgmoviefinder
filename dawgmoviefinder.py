@@ -7,9 +7,9 @@ from config import *
 def read_messages():
     group_messages = requests.get('https://api.groupme.com/v3/groups/{0}/messages?token={1}'.format(GROUP_ID, GM_KEY)).json()
     last_message = group_messages['response']['messages'][0]['text']
-    if last_message[0:6] == '!movie':
+    if last_message[0:6].lower() == '!movie':
         send_message(search(last_message[7:]))
-    if last_message[0:6] == '!about':
+    if last_message[0:6].lower() == '!about':
         send_message(ABOUT)
 
 
@@ -43,4 +43,4 @@ def search(query):
 
 while True:
     read_messages()
-    time.sleep(2)
+    time.sleep(1)
