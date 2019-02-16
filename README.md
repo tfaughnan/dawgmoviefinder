@@ -5,10 +5,10 @@ A simple GroupMe bot for movie lovers.
 What does it do?
 ---
 *Dawg Movie Finder* supplies basic info about movies when called in a GroupMe group. There are currently two commands:
-* ``!movie [title]`` returns info such as full title, year, synopsis, IMDb link for a given search query "\[title]"
+* ``!movie [title]`` returns info such as full title, year, synopsis, and IMDb link for a given search query "\[title]"
 * ``!about`` returns a brief message of your choice. I recommend setting this to a description of this bot and its commands.
 
-Its name comes from the blessed men and brothers of Alumni Hall, aka the dawgs, and our weekly movie nights. &Delta &Omega &Gamma.
+Its name comes from the blessed men and brothers of Alumni Hall, aka the dawgs, and our weekly movie nights. ΔΩΓ.
 
 How do I use it?
 ---
