@@ -29,14 +29,32 @@ def search(query):
         return 'No movie found called \"{0}\"'.format(query)
 
     tmdb_id = str(results[0]['id'])
-    movie = requests.get('https://api.themoviedb.org/3/movie/{0}?api_key={1}'.format(tmdb_id, TMDB_KEY)).json()
+    movie = requests.get('https://api.themoviedb.org/3/movie/{0}?api_key={1}&append_to_response=credits,videos'.format(tmdb_id, TMDB_KEY)).json()
 
     title = movie['title']
     year = movie['release_date'][0:4]
+
+    for person in movie['credits']['crew']:
+        if person['job'] == 'Director':
+            director = person['name']
+            break
+
+    actor0 = movie['credits']['cast'][0]['name']
+    actor1 = movie['credits']['cast'][1]['name']
+
     overview = movie['overview']
     imdb_url = 'https://www.imdb.com/title/{0}'.format(movie['imdb_id'])
 
-    return '{0} ({1})\n-----\n\"{2}\"\n-----\n{3}'.format(title, year, overview, imdb_url)
+    if not movie['videos']['results']:
+        trailer_url = ''
+    else:
+        trailer_url = '\nhttps://youtube.com/watch?v={0}'.format(movie['videos']['results'][0]['key'])
+        for video in movie['videos']['results']:
+            if video['type'] == 'Trailer':
+                trailer_url = '\nhttps://youtube.com/watch?v={0}'.format(video['key'])
+                break
+
+    return '{0} ({1})\ndir. {2}\nstarring {3}, {4}\n-----\n\"{5}\"\n-----\n{6}{7}'.format(title, year, director, actor0, actor1, overview, imdb_url, trailer_url)
 
 
 # ================================================
